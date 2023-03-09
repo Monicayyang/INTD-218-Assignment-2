@@ -1,0 +1,183 @@
+body {
+  /* Cancel the inside and outside margins of the page */
+  margin: 0;
+  padding: 0;
+  /* 100% window height */
+  height: 100vh;
+  /* flex layout,horizontally and  vertically centered */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(200deg, #b5aee4, #505285);
+}
+.hourglass {
+  width: 86px;
+  height: 196px;
+  position: relative;
+  margin: auto;
+  display: flex;
+  /* Display elements vertically */
+  flex-direction: column;
+  /* Align elements to the edge */
+  justify-content: space-between;
+  align-items: center;
+  animation: rotating 2s linear infinite;
+}
+.hourglass::after {
+  content: "";
+  width: 5px;
+  height: 96px;
+  background-color: #cabbe9;
+  position: absolute;
+  top: 20px;
+  animation: flow 2s linear infinite;
+}
+
+.top,
+.bottom {
+  width: 70px;
+  height: 70px;
+  border-style: solid;
+  border-color: #dcdcdc;
+  border-width: 4px 4px 12px 12px;
+  border-radius: 50% 100% 50% 30%;
+  position: relative;
+  overflow: hidden;
+}
+.top {
+  transform: rotate(-45deg);
+}
+.bottom {
+  transform: rotate(135deg);
+}
+
+.top::before,
+.bottom::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: #cabbe9;
+  animation: 2s linear infinite;
+}
+
+.top::before {
+  border-radius: 0 100% 0 0;
+  animation-name: drop-sand;
+}
+.bottom::before {
+  border-radius: 0 0 0 25%;
+  animation-name: fill-sand;
+  transform: translate(50px, -50px);
+}
+
+@keyframes drop-sand {
+  to {
+    transform: translate(-50px, 50px);
+  }
+}
+@keyframes fill-sand {
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes flow {
+  10%,
+  100% {
+    transform: translateY(64px);
+  }
+}
+@keyframes rotating {
+  0%,
+  90% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.time {
+  width: 100px;
+  height: 35px;
+  margin: auto;
+  padding: 15px 32px;
+  font-size: 30px;
+  text-size-adjust: auto;
+  text-align: center;
+  border-style: solid;
+  border-color: #dcdcdc;
+  position: relative;
+  overflow: hidden;
+}
+/* buttom outer div css */
+.but {
+  margin: auto;
+}
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border: 2px solid #4caf50;
+}
+
+.button:hover {
+  background-color: #4caf50;
+  color: white;
+}
+/* hourglass paused css */
+.hourglass.paused::after {
+  content: "";
+  width: 5px;
+  height: 96px;
+  background-color: #cabbe9;
+  position: absolute;
+  top: 20px;
+  animation: flow 2s linear infinite;
+  animation-play-state: paused;
+}
+
+/* top and bottom paused css */
+.top.paused::before,
+.bottom.paused::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: #cabbe9;
+  animation: 2s linear infinite;
+  animation-play-state: paused;
+}
+/* notice css */
+.notice {
+  width: 500px;
+  height: 22px;
+  margin: auto;
+  padding: 15px 32px;
+  font-size: 22px;
+  text-size-adjust: auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: none;
+  /* color: rgb(255, 255, 255); */
+  color: #fff;
+}
+
+h1 {
+  margin: auto;
+}
